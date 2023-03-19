@@ -9,9 +9,10 @@ $specialcharacters = "!*]@_-:.}";
 
 $allcharacters = $alphabet . $alphabetUC . $numbers . $specialcharacters;
 
-$passwordlength = $_GET["passwordlength"];
 
-if($_GET){
+if(!empty($_GET)){
+    $passwordlength = $_GET["passwordlength"];
+
     session_start();
     $_SESSION["generatorpassword"] = generatorpassword($allcharacters, $passwordlength);
     header("Location: ./result.php");
@@ -40,11 +41,6 @@ if($_GET){
                     <button class="btn">Genera Password</button>
                 </div>
             </form>
-        </div>
-        <div class="row">
-           <h1>
-               <?= generatorpassword($allcharacters, $passwordlength) ?>
-           </h1> 
         </div>
     </div>
 </body>
